@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة القبول الموحد - جامعة أم القرى</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+               <img src="uqu_logo_white_bg.png" alt="شعار جامعة أم القرى" class="logo">
+                    <div class="logo-text">
+                        <h1>جامعة أم القرى</h1>
+                        <p>Umm Al-Qura University</p>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-link active">الرئيسية</a>
+                    <a href="#" class="nav-link">عن الجامعة</a>
+                    <a href="#" class="nav-link">الكليات</a>
+                    <a href="#" class="nav-link">القبول</a>
+                    <a href="#" class="nav-link">اتصل بنا</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="lang-btn">English</button>
+                    <button class="login-btn">تسجيل الدخول</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">بوابة القبول الموحد</h2>
+                    <p class="hero-subtitle">جامعة أم القرى</p>
+                    <p class="hero-description">
+                        مرحباً بك في بوابة القبول الموحد لجامعة أم القرى. يمكنك من خلال هذه البوابة 
+                        الاستعلام عن حالة قبولك، تأكيد القبول، وإتمام إجراءات التسجيل بسهولة ويسر.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="goToInquiry()">
+                            <span>الاستعلام عن القبول</span>
+                            <i class="icon">🔍</i>
+                        </button>
+                        <button class="btn btn-secondary" onclick="scrollToServices()">
+                            <span>تعرف على الخدمات</span>
+                            <i class="icon">ℹ️</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <div class="card-header">
+                            <h3>خدمات القبول</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="service-item">
+                                <i class="service-icon">📋</i>
+                                <span>الاستعلام عن القبول</span>
+                            </div>
+                            <div class="service-item">
+                                <i class="service-icon">✅</i>
+                                <span>تأكيد القبول</span>
+                            </div>
+                            <div class="service-item">
+                                <i class="service-icon">💳</i>
+                                <span>سداد الرسوم</span>
+                            </div>
+                            <div class="service-item">
+                                <i class="service-icon">📄</i>
+                                <span>إرفاق إيصال السداد</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">خدمات القبول</h2>
+                <p class="section-subtitle">مجموعة شاملة من الخدمات الإلكترونية لتسهيل عملية القبول والتسجيل</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" onclick="goToInquiry()">
+                    <div class="service-icon-wrapper">
+                        <i class="service-icon">🔍</i>
+                    </div>
+                    <h3 class="service-title">الاستعلام عن القبول</h3>
+                    <p class="service-description">
+                        استعلم عن حالة قبولك في الجامعة باستخدام رقم الهوية الوطنية
+                    </p>
+                    <button class="service-btn">ابدأ الاستعلام</button>
+                </div>
+
+                <div class="service-card" onclick="goToConfirmation()">
+                    <div class="service-icon-wrapper">
+                        <i class="service-icon">✅</i>
+                    </div>
+                    <h3 class="service-title">تأكيد القبول</h3>
+                    <p class="service-description">
+                        أكد قبولك في التخصص المحدد واحصل على فاتورة الرسوم المطلوبة
+                    </p>
+                    <button class="service-btn">تأكيد القبول</button>
+                </div>
+
+                <div class="service-card" onclick="goToPayment()">
+                    <div class="service-icon-wrapper">
+                        <i class="service-icon">💳</i>
+                    </div>
+                    <h3 class="service-title">سداد الرسوم</h3>
+                    <p class="service-description">
+                        اطلع على تفاصيل الرسوم المطلوبة وطرق السداد المتاحة
+                    </p>
+                    <button class="service-btn">عرض الرسوم</button>
+                </div>
+
+                <div class="service-card" onclick="goToReceipt()">
+                    <div class="service-icon-wrapper">
+                        <i class="service-icon">📄</i>
+                    </div>
+                    <h3 class="service-title">إرفاق إيصال السداد</h3>
+                    <p class="service-description">
+                        ارفق صورة إيصال التحويل البنكي لإتمام عملية التسجيل
+                    </p>
+                    <button class="service-btn">رفع الإيصال</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <h3>الدعم الفني</h3>
+                    <p>للحصول على المساعدة والدعم الفني</p>
+                    <a href="tel:+966125270000" class="info-link">920000000</a>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📧</div>
+                    <h3>البريد الإلكتروني</h3>
+                    <p>للاستفسارات والمراسلات الرسمية</p>
+                    <a href="mailto:admission@uqu.edu.sa" class="info-link">admission@uqu.edu.sa</a>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🕐</div>
+                    <h3>ساعات العمل</h3>
+                    <p>أوقات تقديم الخدمات</p>
+                    <span class="info-link">الأحد - الخميس: 8:00 - 16:00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://uqu.edu.sa/Content/images/logo.png" alt="جامعة أم القرى">
+                        <div>
+                            <h4>جامعة أم القرى</h4>
+                            <p>Umm Al-Qura University</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        جامعة أم القرى - مكة المكرمة، المملكة العربية السعودية
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">عن الجامعة</a></li>
+                        <li><a href="#">الكليات</a></li>
+                        <li><a href="#">القبول والتسجيل</a></li>
+                        <li><a href="#">الخدمات الإلكترونية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p>📍 مكة المكرمة، المملكة العربية السعودية</p>
+                        <p>📞 +966 12 527 0000</p>
+                        <p>📧 info@uqu.edu.sa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 جامعة أم القرى. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Container -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

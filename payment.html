@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سداد الرسوم - جامعة أم القرى</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                  <img src="uqu_logo_white_bg.png" alt="شعار جامعة أم القرى" class="logo">                  <div class="logo-text">
+                        <h1>جامعة أم القرى</h1>
+                        <p>Umm Al-Qura University</p>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">الرئيسية</a>
+                    <a href="inquiry.html" class="nav-link">الاستعلام عن القبول</a>
+                    <a href="confirmation.html" class="nav-link">تأكيد القبول</a>
+                    <a href="#" class="nav-link active">السداد</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="lang-btn">English</button>
+                    <a href="index.html" class="login-btn">العودة للرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">سداد الرسوم الجامعية</h1>
+                <p class="page-subtitle">تفاصيل الرسوم المطلوبة ومعلومات الحساب البنكي للسداد</p>
+            </div>
+
+            <div class="payment-container">
+                <!-- Student Summary -->
+                <div class="payment-card">
+                    <div class="card-header">
+                        <div class="header-icon">👤</div>
+                        <h2>بيانات الطالب</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="student-summary">
+                            <div class="summary-item">
+                                <span class="summary-label">الاسم:</span>
+                                <span class="summary-value" id="payment-name">عبدالملك حسن مرزوق المقاطي</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">رقم الهوية:</span>
+                                <span class="summary-value" id="payment-id">1137856454</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invoice Details -->
+                <div class="payment-card">
+                    <div class="card-header">
+                        <div class="header-icon">🧾</div>
+                        <h2>فاتورة الرسوم</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="invoice-table">
+                            <div class="invoice-header">
+                                <div class="invoice-number">رقم الفاتورة: INV-2024-001</div>
+                                <div class="invoice-date">تاريخ الإصدار: 20 يوليو 2024</div>
+                            </div>
+                            
+                            <div class="invoice-items">
+                                <div class="invoice-item">
+                                    <div class="item-description">
+                                        <h4>رسوم تسجيل المقررات</h4>
+                                        <p>رسوم تسجيل المقررات الدراسية للفصل الأول</p>
+                                    </div>
+                                    <div class="item-amount" id="payment-registration-fee">1,500 ر.س</div>
+                                </div>
+                                
+                                <div class="invoice-item">
+                                    <div class="item-description">
+                                        <h4>رسوم إصدار البطاقة الجامعية والرقم الجامعي</h4>
+                                        <p>رسوم إصدار البطاقة الجامعية الذكية والحصول على الرقم الجامعي</p>
+                                    </div>
+                                    <div class="item-amount" id="payment-card-fee">500 ر.س</div>
+                                </div>
+                            </div>
+                            
+                            <div class="invoice-total">
+                                <div class="total-row">
+                                    <span class="total-label">المجموع الفرعي:</span>
+                                    <span class="total-amount">2,000 ر.س</span>
+                                </div>
+                                <div class="total-row">
+                                    <span class="total-label">ضريبة القيمة المضافة (0%):</span>
+                                    <span class="total-amount">0 ر.س</span>
+                                </div>
+                                <div class="total-row final">
+                                    <span class="total-label">إجمالي المبلغ المطلوب:</span>
+                                    <span class="total-amount" id="payment-total">2,000 ر.س</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="invoice-actions">
+                            <button class="btn btn-secondary" onclick="downloadInvoice()">
+                                <span>تحميل الفاتورة</span>
+                                <i class="icon">📄</i>
+                            </button>
+                            <button class="btn btn-secondary" onclick="window.print()">
+                                <span>طباعة الفاتورة</span>
+                                <i class="icon">🖨️</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Information -->
+                <div class="payment-card">
+                    <div class="card-header">
+                        <div class="header-icon">🏦</div>
+                        <h2>معلومات الحساب البنكي</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="bank-info">
+                            <div class="bank-logo">
+                                <div class="bank-icon">🏦</div>
+                                <h3 id="payment-bank">البنك الراجحي</h3>
+                            </div>
+                            
+                            <div class="account-details">
+                                <div class="account-item">
+                                    <span class="account-label">اسم الحساب:</span>
+                                    <span class="account-value">جامعة أم القرى</span>
+                                </div>
+                                <div class="account-item">
+                                    <span class="account-label">رقم الآيبان:</span>
+                                    <div class="iban-container">
+                                        <span class="account-value iban-number" id="payment-iban">SA7980000140608016213309</span>
+                                        <button class="copy-btn" onclick="copyIban()" title="نسخ رقم الآيبان">
+                                            📋
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="account-item">
+                                    <span class="account-label">رمز البنك (SWIFT):</span>
+                                    <span class="account-value">RJHISARI</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-note">
+                            <div class="note-icon">⚠️</div>
+                            <div class="note-content">
+                                <h4>تعليمات مهمة للسداد:</h4>
+                                <ul>
+                                    <li>يجب كتابة رقم الهوية الوطنية في خانة "البيان" عند التحويل</li>
+                                    <li>احتفظ بإيصال التحويل البنكي لرفعه في الخطوة التالية</li>
+                                    <li>يجب إتمام السداد حتى الساعة 12 مساءً من تاريخ اليوم</li>
+                                    <li>في حالة التأخير عن السداد قد يتم إلغاء القبول</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="payment-card">
+                    <div class="card-header">
+                        <div class="header-icon">💳</div>
+                        <h2>طرق السداد المتاحة</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="payment-methods">
+                            <div class="payment-method active">
+                                <div class="method-icon">🏦</div>
+                                <div class="method-info">
+                                    <h4>التحويل البنكي</h4>
+                                    <p>التحويل المباشر من حسابك البنكي إلى حساب الجامعة</p>
+                                    <div class="method-features">
+                                        <span class="feature">✅ آمن ومضمون</span>
+                                        <span class="feature">✅ متاح 24/7</span>
+                                        <span class="feature">✅ بدون رسوم إضافية</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method disabled">
+                                <div class="method-icon">💳</div>
+                                <div class="method-info">
+                                    <h4>الدفع الإلكتروني</h4>
+                                    <p>الدفع بالبطاقة الائتمانية أو مدى (قريباً)</p>
+                                    <div class="method-status">
+                                        <span class="status-badge">قريباً</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="payment-card">
+                    <div class="card-header">
+                        <div class="header-icon">📋</div>
+                        <h2>الخطوات التالية</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="steps-timeline">
+                            <div class="step-item completed">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>الاستعلام عن القبول</h4>
+                                    <p>تم بنجاح ✅</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item completed">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>تأكيد القبول</h4>
+                                    <p>تم بنجاح ✅</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item active">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>سداد الرسوم</h4>
+                                    <p>الخطوة الحالية - قم بالتحويل البنكي</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>إرفاق إيصال السداد</h4>
+                                    <p>ارفع صورة إيصال التحويل</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>اكتمال التسجيل</h4>
+                                    <p>استلام تأكيد التسجيل النهائي</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="next-action">
+                            <p class="action-text">بعد إتمام التحويل البنكي، انتقل للخطوة التالية:</p>
+                            <button class="btn btn-primary" onclick="goToReceipt()">
+                                <span>إرفاق إيصال السداد</span>
+                                <i class="icon">📄</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://uqu.edu.sa/Content/images/logo.png" alt="جامعة أم القرى">
+                        <div>
+                            <h4>جامعة أم القرى</h4>
+                            <p>Umm Al-Qura University</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        جامعة أم القرى - مكة المكرمة، المملكة العربية السعودية
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="inquiry.html">الاستعلام عن القبول</a></li>
+                        <li><a href="confirmation.html">تأكيد القبول</a></li>
+                        <li><a href="payment.html">السداد</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p>📍 مكة المكرمة، المملكة العربية السعودية</p>
+                        <p>📞 +966 12 527 0000</p>
+                        <p>📧 info@uqu.edu.sa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 جامعة أم القرى. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Container -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

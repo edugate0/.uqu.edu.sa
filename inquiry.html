@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاستعلام عن القبول - جامعة أم القرى</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="uqu_logo_white_bg.png" alt="شعار جامعة أم القرى" class="logo">                <div class="logo-text">
+                        <h1>جامعة أم القرى</h1>
+                        <p>Umm Al-Qura University</p>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">الرئيسية</a>
+                    <a href="#" class="nav-link active">الاستعلام عن القبول</a>
+                    <a href="#" class="nav-link">تأكيد القبول</a>
+                    <a href="#" class="nav-link">السداد</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="lang-btn">English</button>
+                    <a href="index.html" class="login-btn">العودة للرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">الاستعلام عن القبول</h1>
+                <p class="page-subtitle">أدخل رقم الهوية الوطنية للاستعلام عن حالة قبولك في الجامعة</p>
+            </div>
+
+            <div class="inquiry-container">
+                <div class="inquiry-card">
+                    <div class="card-header">
+                        <div class="header-icon">🔍</div>
+                        <h2>استعلام عن حالة القبول</h2>
+                        <p>يرجى إدخال رقم الهوية الوطنية للاستعلام عن حالة القبول</p>
+                    </div>
+
+                    <form class="inquiry-form" id="inquiryForm">
+                        <div class="form-group">
+                            <label for="nationalId" class="form-label">
+                                <span class="label-text">رقم الهوية الوطنية</span>
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="nationalId" 
+                                    name="nationalId" 
+                                    class="form-input"
+                                    placeholder="أدخل رقم الهوية الوطنية (10 أرقام)"
+                                    maxlength="10"
+                                    required
+                                >
+                                <div class="input-icon">🆔</div>
+                            </div>
+                            <div class="form-hint">يجب أن يكون رقم الهوية مكوناً من 10 أرقام</div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary inquiry-btn">
+                                <span class="btn-text">استعلام عن القبول</span>
+                                <div class="btn-loader" style="display: none;">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="clearForm()">
+                                <span>مسح البيانات</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Result Card (Hidden by default) -->
+                <div class="result-card" id="resultCard" style="display: none;">
+                    <div class="result-header">
+                        <div class="result-icon success">✅</div>
+                        <h3>نتيجة الاستعلام</h3>
+                    </div>
+                    
+                    <div class="result-content">
+                        <div class="student-info">
+                            <h4>بيانات الطالب</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">الاسم الكامل:</span>
+                                    <span class="info-value" id="studentName">عبدالملك حسن مرزوق المقاطي</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">رقم الهوية:</span>
+                                    <span class="info-value" id="studentId">1137856454</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">رقم الجوال:</span>
+                                    <span class="info-value" id="studentPhone">0502779965</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admission-status">
+                            <h4>حالة القبول</h4>
+                            <div class="status-badge accepted">
+                                <span class="status-icon">🎉</span>
+                                <span class="status-text">مقبول</span>
+                            </div>
+                            <div class="admission-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">الكلية:</span>
+                                    <span class="detail-value">كلية العلوم </span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">التخصص:</span>
+                                    <span class="detail-value"> تكنولوجيا حماية البيئة</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">المستوى:</span>
+                                    <span class="detail-value">بكالوريوس</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">الفصل الدراسي:</span>
+                                    <span class="detail-value">الأول 1447هـ</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="next-steps">
+                            <h4>الخطوات التالية</h4>
+                            <div class="steps-list">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h5>تأكيد القبول</h5>
+                                        <p>يجب تأكيد قبولك في التخصص المحدد خلال المدة المحددة</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h5>سداد الرسوم</h5>
+                                        <p>سداد رسوم التسجيل والبطاقة الجامعية</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h5>إرفاق إيصال السداد</h5>
+                                        <p>رفع صورة إيصال التحويل البنكي</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-actions">
+                            <button class="btn btn-primary" onclick="goToConfirmation()">
+                                <span>تأكيد القبول</span>
+                                <i class="icon">✅</i>
+                            </button>
+                            <button class="btn btn-secondary" onclick="printResult()">
+                                <span>طباعة النتيجة</span>
+                                <i class="icon">🖨️</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="help-section">
+                <div class="help-card">
+                    <h3>تحتاج مساعدة؟</h3>
+                    <p>إذا واجهت أي مشكلة في الاستعلام أو كانت لديك استفسارات، يمكنك التواصل معنا</p>
+                    <div class="help-contacts">
+                        <a href="tel:920000000" class="help-contact">
+                            <span class="contact-icon">📞</span>
+                            <span>920000000</span>
+                        </a>
+                        <a href="mailto:admission@uqu.edu.sa" class="help-contact">
+                            <span class="contact-icon">📧</span>
+                            <span>admission@uqu.edu.sa</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://uqu.edu.sa/Content/images/logo.png" alt="جامعة أم القرى">
+                        <div>
+                            <h4>جامعة أم القرى</h4>
+                            <p>Umm Al-Qura University</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        جامعة أم القرى - مكة المكرمة، المملكة العربية السعودية
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="inquiry.html">الاستعلام عن القبول</a></li>
+                        <li><a href="confirmation.html">تأكيد القبول</a></li>
+                        <li><a href="payment.html">السداد</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p>📍 مكة المكرمة، المملكة العربية السعودية</p>
+                        <p>📞 +966 12 527 0000</p>
+                        <p>📧 info@uqu.edu.sa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 جامعة أم القرى. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Container -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

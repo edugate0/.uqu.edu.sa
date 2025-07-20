@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إرفاق إيصال السداد - جامعة أم القرى</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                  <img src="uqu_logo_white_bg.png" alt="شعار جامعة أم القرى" class="logo">                  <div class="logo-text">
+                        <h1>جامعة أم القرى</h1>
+                        <p>Umm Al-Qura University</p>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">الرئيسية</a>
+                    <a href="inquiry.html" class="nav-link">الاستعلام عن القبول</a>
+                    <a href="confirmation.html" class="nav-link">تأكيد القبول</a>
+                    <a href="payment.html" class="nav-link">السداد</a>
+                    <a href="#" class="nav-link active">إرفاق الإيصال</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="lang-btn">English</button>
+                    <a href="index.html" class="login-btn">العودة للرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">إرفاق إيصال السداد</h1>
+                <p class="page-subtitle">ارفع صورة واضحة من إيصال التحويل البنكي لإتمام عملية التسجيل</p>
+            </div>
+
+            <div class="receipt-container">
+                <!-- Upload Section -->
+                <div class="upload-card" id="uploadSection">
+                    <div class="card-header">
+                        <div class="header-icon">📄</div>
+                        <h2>رفع إيصال السداد</h2>
+                        <p>يرجى رفع صورة واضحة من إيصال التحويل البنكي</p>
+                    </div>
+                    
+                    <div class="card-content">
+                        <form id="uploadForm" class="upload-form">
+                            <div class="upload-area">
+                                <div class="upload-icon">📁</div>
+                                <h3>اسحب الملف هنا أو انقر للاختيار</h3>
+                                <p>الحد الأقصى لحجم الملف: 5 ميجابايت</p>
+                                <p>الصيغ المدعومة: JPG, PNG, PDF</p>
+                                <input type="file" id="receiptFile" name="receiptFile" accept=".jpg,.jpeg,.png,.pdf" required>
+                                <button type="button" class="browse-btn" onclick="document.getElementById('receiptFile').click()">
+                                    اختيار ملف
+                                </button>
+                            </div>
+                            
+                            <!-- File Preview -->
+                            <div class="file-info" id="fileInfo" style="display: none;">
+                                <div class="file-details">
+                                    <div class="file-icon">📄</div>
+                                    <div class="file-meta">
+                                        <div class="file-name" id="fileName">اسم الملف</div>
+                                        <div class="file-size" id="fileSize">حجم الملف</div>
+                                    </div>
+                                    <button type="button" class="remove-file" onclick="removeFile()">❌</button>
+                                </div>
+                                <div class="file-preview" id="filePreview"></div>
+                            </div>
+                            
+                            <!-- Upload Requirements -->
+                            <div class="upload-requirements">
+                                <h4>متطلبات الإيصال:</h4>
+                                <div class="requirements-list">
+                                    <div class="requirement-item">
+                                        <span class="requirement-icon">✅</span>
+                                        <span>يجب أن يكون الإيصال واضحاً وقابلاً للقراءة</span>
+                                    </div>
+                                    <div class="requirement-item">
+                                        <span class="requirement-icon">✅</span>
+                                        <span>يجب أن يحتوي على رقم الهوية في خانة البيان</span>
+                                    </div>
+                                    <div class="requirement-item">
+                                        <span class="requirement-icon">✅</span>
+                                        <span>يجب أن يحتوي على المبلغ الصحيح (2,000 ر.س)</span>
+                                    </div>
+                                    <div class="requirement-item">
+                                        <span class="requirement-icon">✅</span>
+                                        <span>يجب أن يحتوي على رقم الآيبان الصحيح</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary upload-btn">
+                                    <span>رفع الإيصال</span>
+                                    <i class="icon">📤</i>
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                                    <span>العودة للخلف</span>
+                                    <i class="icon">↩️</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Success Section (Hidden by default) -->
+                <div class="success-card" id="successSection" style="display: none;">
+                    <div class="card-header">
+                        <div class="header-icon success">🎉</div>
+                        <h2>تم رفع الإيصال بنجاح!</h2>
+                        <p>شكراً لك، تم استلام إيصال السداد وسيتم مراجعته خلال 24 ساعة</p>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="success-info">
+                            <div class="info-item">
+                                <span class="info-label">رقم المرجع:</span>
+                                <span class="info-value">REF-2024-001</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">تاريخ الرفع:</span>
+                                
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">الحالة:</span>
+                                <span class="info-value status-pending">قيد المراجعة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="next-steps">
+                            <h4>ما التالي؟</h4>
+                            <div class="steps-list">
+                                <div class="step-item">
+                                    <div class="step-icon">⏰</div>
+                                    <div class="step-content">
+                                        <h5>المراجعة</h5>
+                                        <p>سيتم مراجعة الإيصال والتحقق من صحة البيانات خلال 24 ساعة</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-icon">📧</div>
+                                    <div class="step-content">
+                                        <h5>الإشعار</h5>
+                                        <p>ستصلك رسالة نصية وإيميل بتأكيد قبول الإيصال</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-icon">🎓</div>
+                                    <div class="step-content">
+                                        <h5>اكتمال التسجيل</h5>
+                                        <p>بعد الموافقة، سيتم إرسال تفاصيل التسجيل والرقم الجامعي</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-support">
+                            <h4>تحتاج مساعدة؟</h4>
+                            <p>إذا لم تصلك رسالة التأكيد خلال 24 ساعة، يرجى التواصل معنا</p>
+                            <div class="support-contacts">
+                                <a href="tel:920000000" class="support-contact">
+                                    <span class="contact-icon">📞</span>
+                                    <span>920000000</span>
+                                </a>
+                                <a href="mailto:admission@uqu.edu.sa" class="support-contact">
+                                    <span class="contact-icon">📧</span>
+                                    <span>admission@uqu.edu.sa</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="success-actions">
+                            <button class="btn btn-primary" onclick="window.location.href='index.html'">
+                                <span>العودة للرئيسية</span>
+                                <i class="icon">🏠</i>
+                            </button>
+                            <button class="btn btn-secondary" onclick="window.print()">
+                                <span>طباعة التأكيد</span>
+                                <i class="icon">🖨️</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div class="help-card">
+                    <div class="card-header">
+                        <div class="header-icon">❓</div>
+                        <h3>أسئلة شائعة</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h4>ماذا لو كان الإيصال غير واضح؟</h4>
+                                <p>سيتم رفض الإيصال وستصلك رسالة لإعادة رفع إيصال واضح</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>كم يستغرق وقت المراجعة؟</h4>
+                                <p>عادة ما تستغرق المراجعة من 12-24 ساعة في أيام العمل</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>ماذا لو تم رفض الإيصال؟</h4>
+                                <p>ستصلك رسالة توضح سبب الرفض مع إمكانية إعادة الرفع</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>هل يمكن تعديل الإيصال بعد الرفع؟</h4>
+                                <p>نعم، يمكنك رفع إيصال جديد قبل الموافقة على الإيصال الحالي</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://uqu.edu.sa/Content/images/logo.png" alt="جامعة أم القرى">
+                        <div>
+                            <h4>جامعة أم القرى</h4>
+                            <p>Umm Al-Qura University</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        جامعة أم القرى - مكة المكرمة، المملكة العربية السعودية
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="inquiry.html">الاستعلام عن القبول</a></li>
+                        <li><a href="confirmation.html">تأكيد القبول</a></li>
+                        <li><a href="payment.html">السداد</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p>📍 مكة المكرمة، المملكة العربية السعودية</p>
+                        <p>📞 +966 12 527 0000</p>
+                        <p>📧 info@uqu.edu.sa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 جامعة أم القرى. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Container -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="script.js"></script>
+    <script>
+        function removeFile() {
+            document.getElementById('receiptFile').value = '';
+            document.getElementById('fileInfo').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+

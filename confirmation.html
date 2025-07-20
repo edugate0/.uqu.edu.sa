@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد القبول - جامعة أم القرى</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                 <img src="uqu_logo_white_bg.png" alt="شعار جامعة أم القرى" class="logo">                   <div class="logo-text">
+                        <h1>جامعة أم القرى</h1>
+                        <p>Umm Al-Qura University</p>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">الرئيسية</a>
+                    <a href="inquiry.html" class="nav-link">الاستعلام عن القبول</a>
+                    <a href="#" class="nav-link active">تأكيد القبول</a>
+                    <a href="payment.html" class="nav-link">السداد</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="lang-btn">English</button>
+                    <a href="index.html" class="login-btn">العودة للرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">تأكيد القبول</h1>
+                <p class="page-subtitle">مراجعة بيانات القبول وتأكيد الالتحاق بالجامعة</p>
+            </div>
+
+            <div class="confirmation-container">
+                <!-- Student Information Card -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="header-icon">👤</div>
+                        <h2>بيانات الطالب</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">الاسم الكامل:</span>
+                                <span class="info-value" id="confirm-name">عبدالملك حسن مرزوق المقاطي</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">رقم الهوية:</span>
+                                <span class="info-value" id="confirm-id">1137856454</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">رقم الجوال:</span>
+                                <span class="info-value" id="confirm-phone">0502779965</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admission Details Card -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="header-icon">🎓</div>
+                        <h2>تفاصيل القبول</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="admission-badge">
+                            <div class="badge-icon">🎉</div>
+                            <div class="badge-content">
+                                <h3>مبروك! تم قبولك</h3>
+                                <p>في التخصص المطلوب</p>
+                            </div>
+                        </div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">الكلية:</span>
+                                <span class="info-value" id="confirm-college">كلية العلوم </span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">التخصص:</span>
+                                <span class="info-value" id="confirm-major"> تكنولوجيا حماية البيئة</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">المستوى:</span>
+                                <span class="info-value" id="confirm-level">بكالوريوس</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">الفصل الدراسي:</span>
+                                <span class="info-value" id="confirm-semester">الأول 1447هـ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fees Information Card -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="header-icon">💰</div>
+                        <h2>الرسوم المطلوبة</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="fees-table">
+                            <div class="fee-row">
+                                <span class="fee-label">رسوم تسجيل المقررات</span>
+                                <span class="fee-amount" id="registration-fee">1,500 ر.س</span>
+                            </div>
+                            <div class="fee-row">
+                                <span class="fee-label">رسوم إصدار البطاقة الجامعية والرقم الجامعي</span>
+                                <span class="fee-amount" id="card-fee">500 ر.س</span>
+                            </div>
+                            <div class="fee-row total">
+                                <span class="fee-label">إجمالي الرسوم</span>
+                                <span class="fee-amount" id="total-fee">2,000 ر.س</span>
+                            </div>
+                        </div>
+                        <div class="payment-note">
+                            <div class="note-icon">ℹ️</div>
+                            <p>يجب سداد الرسوم خلال 7 أيام من تأكيد القبول لضمان حجز مقعدك الدراسي</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Important Instructions -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="header-icon">📋</div>
+                        <h2>تعليمات مهمة</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="instructions-list">
+                            <div class="instruction-item">
+                                <div class="instruction-icon">⏰</div>
+                                <div class="instruction-content">
+                                    <h4>المدة الزمنية</h4>
+                                    <p>يجب تأكيد القبول وسداد الرسوم حتى الساعة 12 مساءً من تاريخ اليوم</p>
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <div class="instruction-icon">💳</div>
+                                <div class="instruction-content">
+                                    <h4>طريقة السداد</h4>
+                                    <p>السداد عن طريق التحويل البنكي للحساب المحدد في صفحة السداد</p>
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <div class="instruction-icon">📄</div>
+                                <div class="instruction-content">
+                                    <h4>إيصال السداد</h4>
+                                    <p>يجب رفع صورة واضحة من إيصال التحويل البنكي بعد السداد</p>
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <div class="instruction-icon">📞</div>
+                                <div class="instruction-content">
+                                    <h4>الدعم الفني</h4>
+                                    <p>للاستفسارات يرجى التواصل على الرقم: 920000000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirmation Form -->
+                <div class="confirmation-form-card">
+                    <div class="card-header">
+                        <div class="header-icon">✅</div>
+                        <h2>تأكيد القبول</h2>
+                    </div>
+                    <div class="card-content">
+                        <form id="confirmForm" class="confirm-form">
+                            <div class="form-group">
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="agreement" name="agreement" required>
+                                    <label for="agreement" class="checkbox-label">
+                                        <span class="checkmark"></span>
+                                        <span class="label-text">
+                                            أوافق على الشروط والأحكام وأؤكد صحة البيانات المدخلة، وأتعهد بسداد الرسوم المطلوبة في الوقت المحدد
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary confirm-btn">
+                                    <span>تأكيد القبول والمتابعة للسداد</span>
+                                    <i class="icon">✅</i>
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                                    <span>العودة للخلف</span>
+                                    <i class="icon">↩️</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://uqu.edu.sa/Content/images/logo.png" alt="جامعة أم القرى">
+                        <div>
+                            <h4>جامعة أم القرى</h4>
+                            <p>Umm Al-Qura University</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        جامعة أم القرى - مكة المكرمة، المملكة العربية السعودية
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="inquiry.html">الاستعلام عن القبول</a></li>
+                        <li><a href="confirmation.html">تأكيد القبول</a></li>
+                        <li><a href="payment.html">السداد</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p>📍 مكة المكرمة، المملكة العربية السعودية</p>
+                        <p>📞 +966 12 527 0000</p>
+                        <p>📧 info@uqu.edu.sa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 جامعة أم القرى. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Container -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
