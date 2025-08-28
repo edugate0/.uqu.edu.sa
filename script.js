@@ -1,9 +1,10 @@
 // Student Data
 const studentData = {
     nationalId: '1137856454',
+    universityId: '44385645',
     name: 'عبدالملك حسن مرزوق المقاطي',
     phone: '0502779965',
-    college: 'كلية العلوم',
+    college: 'كلية العلوم والدراسات الانسانية',
     major: ' تكنولوجيا حماية البيئة',
     level: 'بكالوريوس',
     semester: 'الأول 1447هـ',
@@ -13,8 +14,9 @@ const studentData = {
         total: 2000
     },
     bankInfo: {
-        bank: 'البنك الراجحي',
-        iban: 'SA7980000140608016213309'
+        bank: 'البنك السعودي الاول ',
+        iban: 'SA0745000000018516153001',
+        accountNumber: '018516153001'
     }
 };
 
@@ -96,23 +98,44 @@ function formatCurrency(amount) {
 
 // Navigation Functions
 function goToInquiry() {
-    window.location.href = 'inquiry.html';
+    window.location.href = 'login.html';
 }
 
 function goToConfirmation() {
+    if (!checkLoginStatus()) return;
     // Store student data in localStorage for confirmation page
     localStorage.setItem('studentData', JSON.stringify(studentData));
     window.location.href = 'confirmation.html';
 }
 
 function goToPayment() {
+    if (!checkLoginStatus()) return;
     localStorage.setItem('studentData', JSON.stringify(studentData));
     window.location.href = 'payment.html';
 }
 
 function goToReceipt() {
+    if (!checkLoginStatus()) return;
     localStorage.setItem('studentData', JSON.stringify(studentData));
     window.location.href = 'receipt.html';
+}
+
+function goToCourses() {
+    if (!checkLoginStatus()) return;
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    window.location.href = 'courses.html';
+}
+
+function goToSchedule() {
+    if (!checkLoginStatus()) return;
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    window.location.href = 'schedule.html';
+}
+
+function goToStudentCard() {
+    if (!checkLoginStatus()) return;
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    window.location.href = 'student-card.html';
 }
 
 function scrollToServices() {
@@ -331,7 +354,8 @@ function updatePaymentData(data) {
         'payment-card-fee': formatCurrency(data.fees.card),
         'payment-total': formatCurrency(data.fees.total),
         'payment-bank': data.bankInfo.bank,
-        'payment-iban': data.bankInfo.iban
+        'payment-iban': data.bankInfo.iban,
+        'payment-account-number': data.bankInfo.accountNumber
     };
     
     Object.entries(elements).forEach(([id, value]) => {
@@ -346,6 +370,15 @@ function copyIban() {
         showMessage('تم نسخ رقم الآيبان بنجاح', 'success');
     }).catch(() => {
         showMessage('فشل في نسخ رقم الآيبان', 'error');
+    });
+}
+
+function copyAccountNumber() {
+    const accountNumber = studentData.bankInfo.accountNumber;
+    navigator.clipboard.writeText(accountNumber).then(() => {
+        showMessage('تم نسخ رقم الحساب بنجاح', 'success');
+    }).catch(() => {
+        showMessage('فشل في نسخ رقم الحساب', 'error');
     });
 }
 
@@ -429,14 +462,51 @@ function handleReceiptUpload(event) {
     uploadBtn.innerHTML = '<div class="spinner"></div> جاري الرفع...';
     uploadBtn.disabled = true;
     
-    // Simulate upload
+    // Simulate upload and payment processing
     setTimeout(() => {
+        // Store receipt information
+        const receiptData = {
+            fileName: file.name,
+            fileSize: file.size,
+            uploadDate: new Date().toISOString(),
+            status: 'pending_review'
+        };
+        
         localStorage.setItem('receiptUploaded', 'true');
+        localStorage.setItem('receiptData', JSON.stringify(receiptData));
+        localStorage.setItem('paymentStatus', 'completed');
+        
         showMessage('تم رفع الإيصال بنجاح! سيتم مراجعته خلال 24 ساعة', 'success');
         
         // Show success state
         document.getElementById('uploadSection').style.display = 'none';
         document.getElementById('successSection').style.display = 'block';
+        
+        // Update success section with receipt details
+        const successSection = document.getElementById('successSection');
+        if (successSection) {
+            successSection.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 3rem; color: #4CAF50; margin-bottom: 15px;">✅</div>
+                    <h3 style="color: #4CAF50; margin-bottom: 15px;">تم رفع الإيصال بنجاح!</h3>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <p><strong>اسم الملف:</strong> ${file.name}</p>
+                        <p><strong>حجم الملف:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                        <p><strong>تاريخ الرفع:</strong> ${new Date().toLocaleDateString('ar-SA')}</p>
+                        <p><strong>الحالة:</strong> قيد المراجعة</p>
+                    </div>
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; border: 1px solid #4CAF50; margin-bottom: 20px;">
+                        <p style="color: #1B5E20; margin: 0;"><strong>تم تأكيد الدفع!</strong></p>
+                        <p style="color: #1B5E20; margin: 5px 0 0 0;">يمكنك الآن الوصول إلى جميع الخدمات الأكاديمية.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                        <a href="courses.html" class="btn btn-primary">تسجيل المقررات</a>
+                        <a href="schedule.html" class="btn btn-secondary">عرض الجدول</a>
+                        <a href="student-card.html" class="btn btn-secondary">البطاقة الجامعية</a>
+                    </div>
+                </div>
+            `;
+        }
         
         uploadBtn.innerHTML = originalText;
         uploadBtn.disabled = false;
@@ -521,4 +591,59 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+
+// Authentication Functions
+function checkLoginStatus() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    // Pages that require login
+    const protectedPages = ['courses.html', 'schedule.html', 'student-card.html', 'payment.html', 'dashboard.html'];
+    
+    if (protectedPages.includes(currentPage) && !isLoggedIn) {
+        showMessage('يجب تسجيل الدخول أولاً للوصول لهذه الصفحة', 'error');
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+        return false;
+    }
+    
+    return true;
+}
+
+function updateHeaderForLoggedInUser() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const loginBtn = document.querySelector('.login-btn');
+    
+    if (isLoggedIn && loginBtn) {
+        // Replace login button with user menu
+        const headerActions = document.querySelector('.header-actions');
+        if (headerActions) {
+            const studentName = JSON.parse(localStorage.getItem('studentData') || '{}').name || 'الطالب';
+            const firstName = studentName.split(' ')[0];
+            
+            headerActions.innerHTML = `
+                <span class="welcome-message">مرحباً، ${firstName}</span>
+                <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+            `;
+        }
+    }
+}
+
+function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('loggedInStudentId');
+    showMessage('تم تسجيل الخروج بنجاح', 'success');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1000);
+}
+
+// Initialize authentication check on page load
+document.addEventListener('DOMContentLoaded', () => {
+    checkLoginStatus();
+    updateHeaderForLoggedInUser();
+});
 

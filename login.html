@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - جامعة أم القرى</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Cairo', sans-serif;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            direction: rtl;
+        }
+        .login-container h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .login-form .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        .login-form input[type="text"]:focus,
+        .login-form input[type="password"]:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+        .login-form .btn-login {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-form .btn-login:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .login-form .btn-login:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            max-width: 400px;
+        }
+        .message {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideIn 0.3s ease-out;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            direction: rtl;
+            text-align: right;
+            color: white;
+        }
+        .message.success {
+            background: #4CAF50;
+        }
+        .message.error {
+            background: #f44336;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="universityId">الرقم الجامعي:</label>
+                <input type="text" id="universityId" name="universityId" required>
+            </div>
+            <div class="form-group">
+                <label for="password">كلمة المرور (رقم الهوية):</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn-login">
+                <span class="btn-text">تسجيل الدخول</span>
+                <span class="spinner" style="display: none;"></span>
+            </button>
+        </form>
+    </div>
+    <div id="messageContainer" class="message-container"></div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', handleLogin);
+            }
+        });
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const universityId = document.getElementById('universityId').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const loginBtn = document.querySelector('.btn-login');
+            const btnText = loginBtn.querySelector('.btn-text');
+            const btnSpinner = loginBtn.querySelector('.spinner');
+
+            // Simple validation (can be expanded)
+            if (!universityId || !password) {
+                showMessage('الرجاء إدخال الرقم الجامعي وكلمة المرور', 'error');
+                return;
+            }
+
+            // Show loading state
+            btnText.style.display = 'none';
+            btnSpinner.style.display = 'inline-block';
+            loginBtn.disabled = true;
+
+            // Simulate API call for login
+            setTimeout(() => {
+                // Check credentials (using hardcoded studentData for now)
+                // In a real application, this would be an API call to a backend
+                if (universityId === '44385645' && password === studentData.nationalId) { // Assuming a dummy university ID for now
+                    showMessage('تم تسجيل الدخول بنجاح!', 'success');
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('loggedInStudentId', universityId);
+                    // Redirect to a protected page or dashboard
+                    window.location.href = 'dashboard.html'; // Redirect to dashboard
+                } else {
+                    showMessage('الرقم الجامعي أو كلمة المرور غير صحيحة', 'error');
+                }
+
+                // Reset button state
+                btnText.style.display = 'inline';
+                btnSpinner.style.display = 'none';
+                loginBtn.disabled = false;
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
+
+
